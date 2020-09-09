@@ -1,10 +1,10 @@
 {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "tabWidth": 2,
-    "useTabs": false,
-    "parser": "babel",
-    "bracketSpacing": true,
-    "arrowParens": "always"
+	"semi": false,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"tabWidth": 2,
+	"useTabs": true,
+	"parser": "babel",
+	"bracketSpacing": true,
+	"arrowParens": "always"
 }
