@@ -1,0 +1,12 @@
+{   
+    "parser": "babel-eslint",
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": "error",
+        "func-style": [ "warn", "expression", { "allowArrowFunctions": true } ]
+    },
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "module"
+    }
+}
