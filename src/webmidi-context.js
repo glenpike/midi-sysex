@@ -51,7 +51,7 @@ const WebMidiContextProvider = ({children}) => {
 		const output = getCurrentOutput()
 		if(output) {
 			console.log(`sending sysex message: ${bytesToHex(data)}`)
-			sendSysex(manufacturer, data)
+			output.sendSysex(manufacturer, data)
 		}
 	}
 
