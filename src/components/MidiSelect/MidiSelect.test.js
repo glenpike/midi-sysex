@@ -19,8 +19,8 @@ describe('MidiSelect', () => {
 
 	let currentOutput = null
 
-	const provider = { 
-		currentOutput, 
+	const provider = {
+		currentOutput,
 		midiOutputs,
 		setCurrentOutput: jest.fn(),
 		initialise: jest.fn((output) => {
@@ -32,7 +32,7 @@ describe('MidiSelect', () => {
 		act(() => {
 			({ container } = render(<WebMidiContext.Provider value={provider}>
 				<MidiSelect/>
-			</WebMidiContext.Provider>))	
+			</WebMidiContext.Provider>))
 		})
 	})
 
@@ -67,7 +67,7 @@ describe('MidiSelect', () => {
 			act(() => {
 			({ container } = render(<WebMidiContext.Provider value={provider}>
 					<MidiSelect/>
-				</WebMidiContext.Provider>))	
+				</WebMidiContext.Provider>))
 			})
 			expect(container.querySelector('select').value).toBe('1')
 		})

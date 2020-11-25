@@ -14,7 +14,7 @@ const ReverbControl = ({ sliderConfig }) => {
 	
 	const sliders = sliderConfig.controls.reduce((acc, control) => {
 		if (control.type == 'range') {
-			const id = bytesToHex(control.address)
+			const id = `control_${bytesToHex(control.address).replace(/,/g, '_')}`
 			const disabled = !(midiInitialised && currentOutput)
 			acc.push({ id, changeHandler, disabled, ...control })
 		}

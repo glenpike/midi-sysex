@@ -1,6 +1,5 @@
-import React from "react";
-// import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
+import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { render, fireEvent } from '@testing-library/react'
 
 import Slider from './Slider'
@@ -32,7 +31,7 @@ describe('Slider', () => {
 		act(() => {
 			({container} = render(<Slider {...props}/>));
 		});
-		expect(container.querySelector("label").textContent).toBe(props.label)
+		expect(container.querySelector('label').textContent).toBe(props.label)
 	})
 
 	it('sets a default value', () => {
@@ -40,7 +39,7 @@ describe('Slider', () => {
 			({container} = render(<Slider {...props}/>));
 		});
 		const expectedValue = `${(props.range[1] - props.range[0]) / 2}`
-		expect(container.querySelector("input").value).toBe(expectedValue)
+		expect(container.querySelector('input').value).toBe(expectedValue)
 	})
 
 	it('I can set a value', () => {
@@ -48,22 +47,22 @@ describe('Slider', () => {
 		act(() => {
 			({container} = render(<Slider {...testProps}/>));
 		});
-		expect(container.querySelector("input").value).toBe("20")
+		expect(container.querySelector('input').value).toBe('20')
 	})
 
 	it('it sets min and max values', () => {
 		act(() => {
 			({container} = render(<Slider {...props}/>));
 		});
-		expect(container.querySelector("input").min).toBe(`${props.range[0]}`)
-		expect(container.querySelector("input").max).toBe(`${props.range[1]}`)
+		expect(container.querySelector('input').min).toBe(`${props.range[0]}`)
+		expect(container.querySelector('input').max).toBe(`${props.range[1]}`)
 	})
 
 	it('calls the handler with the right value	', () => {
 		act(() => {
 			({container} = render(<Slider {...props}/>));
 		});
-		const input = container.querySelector("input")
+		const input = container.querySelector('input')
 		const value = '20'
 		fireEvent.change(input, { target: { value: value } })
 		expect(handler).toHaveBeenCalledWith(props.address, value)

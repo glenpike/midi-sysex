@@ -5,7 +5,7 @@ const checkSum = (data) => {
 const bytesToHex = (bytes) => {
 	return bytes.reduce((hex, byte) => {
 		return hex + `${(byte >>> 4).toString(16)}${(byte & 0xf).toString(16)} `
-	}, '')
+	}, '').trim().replace(/ /g, ',')
 }
 
 // const testReverbValue = (output) => {
