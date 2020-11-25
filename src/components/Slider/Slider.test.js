@@ -19,7 +19,11 @@ describe('Slider', () => {
 		disabled: false,
 	}
 
-	beforeEach(() => {})
+	beforeEach(() => {
+		act(() => {
+			;({ container } = render(<Slider {...props} />))
+		})
+	})
 
 	afterEach(() => {
 		container = null
@@ -27,16 +31,10 @@ describe('Slider', () => {
 	})
 
 	it('renders the with the correct label', () => {
-		act(() => {
-			;({ container } = render(<Slider {...props} />))
-		})
 		expect(container.querySelector('label').textContent).toBe(props.label)
 	})
 
 	it('sets a default value', () => {
-		act(() => {
-			;({ container } = render(<Slider {...props} />))
-		})
 		const expectedValue = `${(props.range[1] - props.range[0]) / 2}`
 		expect(container.querySelector('input').value).toBe(expectedValue)
 	})
@@ -50,17 +48,11 @@ describe('Slider', () => {
 	})
 
 	it('it sets min and max values', () => {
-		act(() => {
-			;({ container } = render(<Slider {...props} />))
-		})
 		expect(container.querySelector('input').min).toBe(`${props.range[0]}`)
 		expect(container.querySelector('input').max).toBe(`${props.range[1]}`)
 	})
 
 	it('calls the handler with the right value	', () => {
-		act(() => {
-			;({ container } = render(<Slider {...props} />))
-		})
 		const input = container.querySelector('input')
 		const value = '20'
 		fireEvent.change(input, { target: { value: value } })

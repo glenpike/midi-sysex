@@ -4,6 +4,7 @@ import WebMidiContext from '../../contexts/WebMidiContext.js'
 import { bytesToHex } from '../../utils.js'
 
 import Slider from '../Slider/Slider.js'
+import RadioOptions from '../RadioOptions/RadioOptions.js'
 
 const ReverbControl = ({ sliderConfig }) => {
 	const { midiInitialised, currentOutput, sendSysexMessage } = useContext(
@@ -14,21 +15,27 @@ const ReverbControl = ({ sliderConfig }) => {
 		sendSysexMessage(address, value)
 	}
 
-	const sliders = sliderConfig.controls.reduce((acc, control) => {
-		if (control.type == 'range') {
-			const id = `control_${bytesToHex(control.address).replace(/,/g, '_')}`
-			const disabled = !(midiInitialised && currentOutput)
-			acc.push({ id, changeHandler, disabled, ...control })
-		}
+	const controls = sliderConfig.controls.reduce((acc, control) => {
+		const id = `control_${bytesToHex(control.address).replace(/,/g, '_')}`
+		const disabled = !(midiInitialised && currentOutput)
+		acc.push({ id, changeHandler, disabled, ...control })
 		return acc
 	}, [])
 
 	return (
-		<div>
-			{sliders.map((slider, index) => {
-				return <Slider key={index} {...slider} />
+		<React.Fragment>
+			{controls.map((control) => {
+				const isSlider = control.type == 'range'
+				return (
+					<React.Fragment key={control.id}>
+						{isSlider
+							? <Slider {...control} />
+							: <RadioOptions {...control}/>
+						}
+					</React.Fragment>
+				)
 			})}
-		</div>
+		</React.Fragment>
 	)
 }
 
