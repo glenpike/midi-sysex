@@ -1,5 +1,5 @@
-import React from "react";
-import { act } from "react-dom/test-utils";
+import React from 'react'
+import { act } from 'react-dom/test-utils'
 import { render, fireEvent } from '@testing-library/react'
 import { screen } from '@testing-library/dom'
 import MidiSelect from './MidiSelect.js'
@@ -10,11 +10,11 @@ describe('MidiSelect', () => {
 
 	const midiOutputs = [
 		{
-			name: 'Midi one'
+			name: 'Midi one',
 		},
 		{
-			name: 'Midi two'
-		}
+			name: 'Midi two',
+		},
 	]
 
 	let currentOutput = null
@@ -25,14 +25,16 @@ describe('MidiSelect', () => {
 		setCurrentOutput: jest.fn(),
 		initialise: jest.fn((output) => {
 			currentOutput = midiOutputs[output]
-		})
+		}),
 	}
 
 	beforeEach(() => {
 		act(() => {
-			({ container } = render(<WebMidiContext.Provider value={provider}>
-				<MidiSelect/>
-			</WebMidiContext.Provider>))
+			;({ container } = render(
+				<WebMidiContext.Provider value={provider}>
+					<MidiSelect />
+				</WebMidiContext.Provider>
+			))
 		})
 	})
 
@@ -53,7 +55,9 @@ describe('MidiSelect', () => {
 	})
 
 	it('calls setCurrentOutput when a midi input is chosen ', () => {
-		fireEvent.change(screen.getByDisplayValue(/please select/i), { target: { value: '1' } })
+		fireEvent.change(screen.getByDisplayValue(/please select/i), {
+			target: { value: '1' },
+		})
 		expect(provider.setCurrentOutput).toHaveBeenCalledWith(1)
 	})
 
@@ -65,9 +69,11 @@ describe('MidiSelect', () => {
 		it('renders the selected output', () => {
 			provider.currentOutput = midiOutputs[1]
 			act(() => {
-			({ container } = render(<WebMidiContext.Provider value={provider}>
-					<MidiSelect/>
-				</WebMidiContext.Provider>))
+				;({ container } = render(
+					<WebMidiContext.Provider value={provider}>
+						<MidiSelect />
+					</WebMidiContext.Provider>
+				))
 			})
 			expect(container.querySelector('select').value).toBe('1')
 		})

@@ -1,11 +1,14 @@
 const checkSum = (data) => {
-	return 128 - (data.reduce((sum, value) => (sum + +value), 0)  % 128)
+	return 128 - (data.reduce((sum, value) => sum + +value, 0) % 128)
 }
 
 const bytesToHex = (bytes) => {
-	return bytes.reduce((hex, byte) => {
-		return hex + `${(byte >>> 4).toString(16)}${(byte & 0xf).toString(16)} `
-	}, '').trim().replace(/ /g, ',')
+	return bytes
+		.reduce((hex, byte) => {
+			return hex + `${(byte >>> 4).toString(16)}${(byte & 0xf).toString(16)} `
+		}, '')
+		.trim()
+		.replace(/ /g, ',')
 }
 
 // const testReverbValue = (output) => {

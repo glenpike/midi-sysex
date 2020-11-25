@@ -6,12 +6,14 @@ import { bytesToHex } from '../../utils.js'
 import Slider from '../Slider/Slider.js'
 
 const ReverbControl = ({ sliderConfig }) => {
-	const { midiInitialised, currentOutput, sendSysexMessage } = useContext(WebMidiContext)
+	const { midiInitialised, currentOutput, sendSysexMessage } = useContext(
+		WebMidiContext
+	)
 
 	const changeHandler = (address, value) => {
 		sendSysexMessage(address, value)
 	}
-	
+
 	const sliders = sliderConfig.controls.reduce((acc, control) => {
 		if (control.type == 'range') {
 			const id = `control_${bytesToHex(control.address).replace(/,/g, '_')}`
@@ -23,8 +25,8 @@ const ReverbControl = ({ sliderConfig }) => {
 
 	return (
 		<div>
-			{ sliders.map((slider, index) => {
-					return <Slider key={index} { ...slider }/>
+			{sliders.map((slider, index) => {
+				return <Slider key={index} {...slider} />
 			})}
 		</div>
 	)
