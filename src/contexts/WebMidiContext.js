@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import WebMidi from 'webmidi'
-import { bytesToHex } from './utils.js'
+import { bytesToHex } from '../utils.js'
 
 const sysexEnabled = true
 

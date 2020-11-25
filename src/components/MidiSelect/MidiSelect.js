@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import WebMidiContext from '../webmidi-context';
+import WebMidiContext from '../../contexts/WebMidiContext.js';
 
 const MidiSelect = () => {
 

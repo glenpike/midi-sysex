@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import WebMidiContext from '../webmidi-context'
+import WebMidiContext from '../../contexts/WebMidiContext.js'
 
-import { reverbControls } from '../controls.js'
-import { bytesToHex, checkSum } from '../utils.js'
+import { reverbControls } from '../../controls.js'
+import { bytesToHex, checkSum } from '../../utils.js'
 
-import Slider from './slider.js'
+import Slider from '../Slider/Slider.js'
 
 const ReverbControl = () => {
 
