@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MidiSelect from "./components/MidiSelect/MidiSelect.js";
 import ReverbControl from "./components/ReverbControl/ReverbControl.js";
 import { WebMidiContextProvider } from "./contexts/WebMidiContext.js"
+import { reverbControls } from './controls.js'
 // import "./App.css";
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
 						<MidiSelect/>
 					</div>
 					<h1> Midi Sysex Controls </h1>
-					<ReverbControl/>
+					<ReverbControl sliderConfig={reverbControls}/>
 				</div>
 			</WebMidiContextProvider>
 		);

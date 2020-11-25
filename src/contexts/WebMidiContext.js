@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import WebMidi from 'webmidi'
-import { bytesToHex } from '../utils.js'
+import { bytesToHex, checkSum } from '../utils.js'
 
 const sysexEnabled = true
 
@@ -36,7 +36,11 @@ const WebMidiContextProvider = ({children}) => {
 	}
 
 	const setCurrentOutput = (index) => {
-		_setCurrentOutput(midiOutputs[index])
+		let output = null
+		if(index > 0 && index < midiOutputs.length) {
+			output = midiOutputs[index]
+		}
+		_setCurrentOutput(output)
 	}
 
 	const getCurrentOutput = () => {
@@ -46,7 +50,18 @@ const WebMidiContextProvider = ({children}) => {
 		return null
 	}
 
-	const sendSysexMessage = (data) => {
+	const makeSysexData = (address, value) => {
+		const deviceId = 0x10
+		const modelId = [0x00, 0x0b]
+		const sendCmd = 0x12
+		const fullAddress = [0x01, 0x00].concat(address)
+		const check = checkSum(fullAddress.concat(value))
+		const data = [].concat(deviceId, modelId, sendCmd, fullAddress, value, check)
+		return data;
+	}
+
+	const sendSysexMessage = (address, value) => {
+		const data = makeSysexData(address, value)
 		const manufacturer = 0x41
 		const output = getCurrentOutput()
 		if(output) {
