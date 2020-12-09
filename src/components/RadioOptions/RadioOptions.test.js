@@ -43,7 +43,7 @@ describe('RadioOptions', () => {
 
 	it('sets a default value', () => {
 		const expectedValue = props.range[0]
-		expect(container.querySelector('input:checked').value).toBe(expectedValue)
+		expect(container.querySelector('input:checked').value).toBe('0')
 	})
 
 	it('I can set a value', () => {
@@ -51,7 +51,7 @@ describe('RadioOptions', () => {
 		act(() => {
 			;({ container } = render(<RadioOptions {...testProps} />))
 		})
-		expect(container.querySelector('input:checked').value).toBe(props.range[2])
+		expect(container.querySelector('input:checked').value).toBe('2')
 	})
 
 
@@ -62,6 +62,6 @@ describe('RadioOptions', () => {
 		console.log('value: ', value, 'input: ', input.value)
 		fireEvent.change(input, { target: { value }})
 		screen.debug()
-		expect(handler).toHaveBeenCalledWith(props.address, value)
+		expect(handler).toHaveBeenCalledWith(props.address, index)
 	})
 })

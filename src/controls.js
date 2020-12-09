@@ -6,18 +6,21 @@ const reverbControls = {
 			address: [0x00, 0x28],
 			type: 'options',
 			range: ['ROOM1', 'ROOM2', 'STAGE1', 'STAGE2', 'HALL1', 'HALL2'],
+			value: 'STAGE1',
 		},
 		{
 			label: 'Reverb Level',
 			address: [0x00, 0x29],
 			type: 'range',
 			range: [0, 127],
+			value: 127,
 		},
 		{
 			label: 'Reverb Time',
 			address: [0x00, 0x2a],
 			type: 'range',
 			range: [0, 127],
+			value: 90
 		},
 		{
 			label: 'Reverb HF Damp',
@@ -43,8 +46,22 @@ const reverbControls = {
 				'8000',
 				'BYPASS',
 			],
+			value: '4000',
 		},
 	],
 }
 
-export { reverbControls }
+const delayControls = {
+	name: 'Delay',
+	controls: [
+		{
+			label: 'Delay Type',
+			address: [0x00, 0x28],
+			type: 'options',
+			range: ['ROOM1', 'ROOM2', 'STAGE1', 'STAGE2', 'HALL1', 'HALL2'],
+			value: 'STAGE1',
+		},
+	]
+}
+const controlConfig = [ reverbControls, delayControls ] 
+export { controlConfig }

@@ -5,8 +5,9 @@ import { bytesToHex } from '../../utils.js'
 
 import Slider from '../Slider/Slider.js'
 import RadioOptions from '../RadioOptions/RadioOptions.js'
+import './GroupControl.scss'
 
-const ReverbControl = ({ sliderConfig }) => {
+const GroupControl = ({ sliderConfig }) => {
 	const { midiInitialised, currentOutput, sendSysexMessage } = useContext(
 		WebMidiContext
 	)
@@ -23,7 +24,8 @@ const ReverbControl = ({ sliderConfig }) => {
 	}, [])
 
 	return (
-		<React.Fragment>
+		<fieldset className="group-control">
+			<legend>{sliderConfig.name}</legend>
 			{controls.map((control) => {
 				const isSlider = control.type == 'range'
 				return (
@@ -35,8 +37,8 @@ const ReverbControl = ({ sliderConfig }) => {
 					</React.Fragment>
 				)
 			})}
-		</React.Fragment>
+		</fieldset>
 	)
 }
 
-export default ReverbControl
+export default GroupControl

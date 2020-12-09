@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "src/index.js",
   "scripts": {
-    "watch": "watchify src/*.js -o dist/bundle.js  -dv -t [ babelify ]",
+    "watch": "watchify src/*.js -o dist/bundle.js  -dv ",
     "serve": "serve -l 8080 dist/",
     "livereload": "livereload dist/",
     "dev": "npm run serve & npm run livereload & npm run watch",
@@ -17,7 +17,14 @@
   "engines": {
     "node": ">=10.14.1"
   },
-  "browser": {},
+	"browser": {},
+	"browserify": { "transform": [ "babelify", "scssify" ] },
+	"jest": {
+		"moduleNameMapper": {
+			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+			"\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+		}
+	},
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -36,6 +43,7 @@
     "jest": "^26.6.3",
     "livereload": "^0.9.1",
     "prettier": "^2.0.5",
+    "scssify": "^3.0.1",
     "serve": "^11.3.2",
     "watchify": "^3.11.1"
   },

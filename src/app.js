@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
 import MidiSelect from './components/MidiSelect/MidiSelect.js'
-import ReverbControl from './components/ReverbControl/ReverbControl.js'
+import GroupControl from './components/GroupControl/GroupControl.js'
 import { WebMidiContextProvider } from './contexts/WebMidiContext.js'
-import { reverbControls } from './controls.js'
-// import "./App.css";
+import { controlConfig } from './controls.js'
+import "./app.scss";
 
 class App extends Component {
 	render() {
 		return (
 			<WebMidiContextProvider>
 				<div className="App">
-					<div className="control-bar">
+					<div className="control__bar">
+						<h1 className="control__heading"> Midi Sysex Controls </h1>
 						<MidiSelect />
 					</div>
-					<h1> Midi Sysex Controls </h1>
-					<ReverbControl sliderConfig={reverbControls} />
+					
+					<div className="control__layout">
+						{ controlConfig.map((control) =>
+							<GroupControl sliderConfig={control} />
+						)}
+					</div>
 				</div>
 			</WebMidiContextProvider>
 		)

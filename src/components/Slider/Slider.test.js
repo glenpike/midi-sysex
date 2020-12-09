@@ -35,8 +35,7 @@ describe('Slider', () => {
 	})
 
 	it('sets a default value', () => {
-		const expectedValue = `${(props.range[1] - props.range[0]) / 2}`
-		expect(container.querySelector('input').value).toBe(expectedValue)
+		expect(container.querySelector('input').value).toBe('0')
 	})
 
 	it('I can set a value', () => {

@@ -1,0 +1,48 @@
+html {
+  background-color: transparent;
+	box-sizing: border-box;
+  font-size: 62.5%;
+	-ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  background-color: #fff;
+  color: #222;
+  font-display: swap;
+  font-family: sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  position: relative;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  width: 100%; }
+  @media screen and (min-width: 768px) {
+    body {
+      font-size: 1.8rem;
+			line-height: 1.5; 
+	}
+}
+
+.app {
+	padding: 20px;
+}
+
+.control__bar {
+	display: grid;
+	grid-template-columns: 1fr auto;
+}
+
+.control__heading {
+	font-size: 2rem;
+	margin: 0;
+}
+
+.control__layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}

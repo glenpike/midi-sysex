@@ -2,11 +2,11 @@ import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, fireEvent } from '@testing-library/react'
 import { screen } from '@testing-library/dom'
-import ReverbControl from './ReverbControl.js'
+import GroupControl from './GroupControl.js'
 import WebMidiContext from '../../contexts/WebMidiContext.js'
 import { bytesToHex } from '../../utils.js'
 
-describe('ReverbControl', () => {
+describe('GroupControl', () => {
 	let container
 
 	const sliderConfig = {
@@ -39,7 +39,7 @@ describe('ReverbControl', () => {
 		act(() => {
 			;({ container } = render(
 				<WebMidiContext.Provider value={provider}>
-					<ReverbControl sliderConfig={sliderConfig} />
+					<GroupControl sliderConfig={sliderConfig} />
 				</WebMidiContext.Provider>
 			))
 		})
@@ -81,7 +81,7 @@ describe('ReverbControl', () => {
 			act(() => {
 				;({ container } = render(
 					<WebMidiContext.Provider value={provider}>
-						<ReverbControl sliderConfig={sliderConfig} />
+						<GroupControl sliderConfig={sliderConfig} />
 					</WebMidiContext.Provider>
 				))
 			})
@@ -95,7 +95,7 @@ describe('ReverbControl', () => {
 			act(() => {
 				;({ container } = render(
 					<WebMidiContext.Provider value={provider}>
-						<ReverbControl sliderConfig={sliderConfig} />
+						<GroupControl sliderConfig={sliderConfig} />
 					</WebMidiContext.Provider>
 				))
 			})

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import WebMidiContext from '../../contexts/WebMidiContext.js'
 
+import './MidiSelect.scss'
+
 const MidiSelect = () => {
 	const {
 		currentOutput,

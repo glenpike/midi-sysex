@@ -1,0 +1,79 @@
+$mover-w: 12.5em;
+$thumb-d: 1.5em;
+$track-w: $mover-w + $thumb-d;
+$track-h: .25em;
+$track-c: #151515;
+$ruler-c: #95a;
+$ruler-u: .1*$mover-w;
+$ruler-w: 2px;
+
+@mixin track() { 
+	background-color: $track-c;
+	height: $track-h; width: $track-w;
+	box-sizing: border-box;
+ }
+ .slider-control__range {
+	 font-size: 1rem;
+ }
+
+@mixin thumb() {
+	box-sizing: border-box;
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 2%;
+	background: $track-c;
+}
+
+@mixin thumb-focus() { background: #f90; }
+
+.slider-control {
+	display: flex;
+	flex-direction: column-reverse;
+	position: relative;
+	width: $track-w;
+	color: $track-c;
+}
+
+.slider-control__range {
+	&, &::-webkit-slider-thumb {
+		-webkit-appearance: none;
+	}
+	
+	margin: 0;
+	padding: 0;
+	width: 100%; height: 2*$thumb-d;
+	background: 
+		repeating-linear-gradient(90deg,
+			$track-c 0, 
+			$track-c $ruler-w, 
+			transparent 0, 
+			transparent $ruler-u)
+		calc(.5*(#{$thumb-d} - #{$ruler-w})) 1.25*$thumb-d/ calc(#{$mover-w} + #{$ruler-w}) .5*$thumb-d no-repeat;
+	font: inherit;
+
+  &::-webkit-slider-runnable-track { @include track }
+  &::-moz-range-track { @include track }
+  &::-ms-track { @include track }
+
+	&::-webkit-slider-thumb {
+		margin-top: .5*($track-h - $thumb-d);
+		@include thumb
+	}
+	&::-moz-range-thumb { @include thumb }
+	&::-ms-thumb {
+		margin-top: 0;
+		@include thumb
+	}
+
+	&:focus {
+		outline: none;
+		
+		&::-webkit-slider-thumb {
+			@include thumb-focus
+		}
+		&::-moz-range-thumb { @include thumb-focus }
+		&::-ms-thumb {
+			@include thumb-focus
+		}
+	}
+}
