@@ -34,8 +34,7 @@ const MidiSelect = () => {
 				{midiOutputs.map((midiOutput, index) => {
 					return (
 						<option key={index} value={index}>
-							{' '}
-							{midiOutput.name}{' '}
+							{midiOutput.name}
 						</option>
 					)
 				})}{' '}

@@ -26,7 +26,6 @@ const RadioOptions = ({
 		setRadioValue(index)
 	}
 
-	
 	console.log(`selectedValue ${selectedValue}, ${value}, ${range}`)
 
 	return (

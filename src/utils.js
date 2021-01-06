@@ -1,5 +1,5 @@
 const checkSum = (data) => {
-	return 128 - (data.reduce((sum, value) => sum + +value, 0) % 128)
+	return (128 - (data.reduce((sum, value) => sum + +value, 0) % 128)) % 128
 }
 
 const bytesToHex = (bytes) => {

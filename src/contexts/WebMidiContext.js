@@ -36,7 +36,7 @@ const WebMidiContextProvider = ({ children }) => {
 
 	const setCurrentOutput = (index) => {
 		let output = null
-		if (index > 0 && index < midiOutputs.length) {
+		if (index >= 0 && index < midiOutputs.length) {
 			output = midiOutputs[index]
 		}
 		_setCurrentOutput(output)
@@ -72,7 +72,11 @@ const WebMidiContextProvider = ({ children }) => {
 		const output = getCurrentOutput()
 		if (output) {
 			console.log(`sending sysex message: ${bytesToHex(data)}`)
-			output.sendSysex(manufacturer, data)
+			try {
+				output.sendSysex(manufacturer, data)
+			} catch(RangeError) {
+				console.log(`RangeError for: ${value}`)
+			}
 		}
 	}
 

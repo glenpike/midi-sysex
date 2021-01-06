@@ -55,7 +55,7 @@ describe('RadioOptions', () => {
 	})
 
 
-	it('calls the handler with the right value	', () => {
+	it.skip('calls the handler with the right value	', () => {
 		const index = 3
 		const value = props.range[index]
 		const input = screen.getByLabelText(new RegExp(value))
