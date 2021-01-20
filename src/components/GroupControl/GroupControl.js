@@ -18,6 +18,7 @@ const GroupControl = ({ sliderConfig }) => {
 
 	const controls = sliderConfig.controls.reduce((acc, control) => {
 		const id = `control_${bytesToHex(control.address).replace(/,/g, '_')}`
+		// console.log('slider id: ', id, ' for ', control.label)
 		const disabled = !(midiInitialised && currentOutput)
 		acc.push({ id, changeHandler, disabled, ...control })
 		return acc

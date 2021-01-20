@@ -26,7 +26,7 @@ const RadioOptions = ({
 		setRadioValue(index)
 	}
 
-	console.log(`selectedValue ${selectedValue}, ${value}, ${range}`)
+	// console.log(`selectedValue ${selectedValue}, value: ${value}, [${range}]`)
 
 	return (
 		<div className="options-control">

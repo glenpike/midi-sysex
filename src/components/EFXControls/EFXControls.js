@@ -38,7 +38,8 @@ const EFXControls = ({ efxConfig }) => {
 	const { name: efxName , controls } = efxTypes[currentEfxType]
 	const efxControl = { name: efxName }
 	efxControl.controls = controls.map((control, index) => {
-		const address = [0x00, paramStartAddress + index]
+		const address = [0x00, +paramStartAddress + index]
+		// console.log(`address: ${address} for ${control.label}`)
 		return { address, ...control }
 	})
 

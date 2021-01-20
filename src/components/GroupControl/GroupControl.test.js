@@ -51,9 +51,12 @@ describe('GroupControl', () => {
 
 	it('renders sliders for each control', () => {
 		expect(container.querySelectorAll('input[type="range"]')).toHaveLength(2)
-		sliderConfig.controls.forEach((control, index) => {
-			const slider = screen.getByLabelText(control.label)
-			expect(slider).not.toBe(null)
+	})
+
+	it('renders the label for each control', () => {
+		sliderConfig.controls.forEach((control) => {
+			const label = screen.getByText(control.label)
+			expect(label).not.toBe(null)
 		})
 	})
 
@@ -104,12 +107,4 @@ describe('GroupControl', () => {
 			).toHaveLength(2)
 		})
 	})
-
-	// with provider, we inject mock
-
-	// Test it renders N sliders
-
-	// Test changing one calls the mock function
-
-	// Test the address is interpreted / handled correctly
 })

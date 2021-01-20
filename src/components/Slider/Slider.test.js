@@ -31,7 +31,7 @@ describe('Slider', () => {
 	})
 
 	it('renders the with the correct label', () => {
-		expect(container.querySelector('label').textContent).toBe(props.label)
+		expect(container.querySelector('label').textContent).toContain(props.label)
 	})
 
 	it('sets a default value', () => {

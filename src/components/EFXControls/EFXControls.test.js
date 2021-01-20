@@ -59,7 +59,7 @@ describe('EFXControls', () => {
 			range: efxTypes.map(efxType => efxType.name),
 			value: efxTypes[0].name,
 		},
-		paramStartAddress: [0x00, 0x0E],
+		paramStartAddress: 0x0E,
 		maxParams: 12,
 		efxTypes,
 	}
