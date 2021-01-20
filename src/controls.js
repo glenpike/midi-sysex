@@ -185,8 +185,7 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'SPECTRUM',
 		controls: [{
 				label: 'Low-High',
@@ -209,8 +208,7 @@ const efxTypes = [
 			outputPan,
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'ENHANCER',
 		controls: [{
 				label: 'Sensitivity',
@@ -238,8 +236,7 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'OVERDRIVE',
 		controls: [{
 				label: 'Input Level',
@@ -262,8 +259,7 @@ const efxTypes = [
 			outputPan,
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'DISTORTION',
 		controls: [{
 				label: 'Input Level',
@@ -286,8 +282,7 @@ const efxTypes = [
 			outputPan,
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'Lo-Fi',
 		controls: [{
 				label: 'BitDown',
@@ -327,8 +322,7 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'NOISE',
 		controls: [{
 				label: 'Noise Type',
@@ -357,8 +351,7 @@ const efxTypes = [
 			outputPan,
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'RADIO-TUNG',
 		controls: [{
 				label: 'Radio Detune',
@@ -392,8 +385,7 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'PHONOGRAPH',
 		controls: [{
 				label: 'Disc Type',
@@ -416,8 +408,7 @@ const efxTypes = [
 			outputPan,
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'COMPRESSOR',
 		controls: [{
 				label: 'Attack',
@@ -451,8 +442,7 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'LIMITER',
 		controls: [{
 				label: 'Threshold',
@@ -481,8 +471,7 @@ const efxTypes = [
 			outputPan,
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'SLICER',
 		controls: [{
 				label: 'Timing',
@@ -517,8 +506,7 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'TREMOLO',
 		controls: [{
 				label: 'LFO Type',
@@ -552,8 +540,7 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'PHASER',
 		controls: [{
 				label: 'Manual',
@@ -588,8 +575,7 @@ const efxTypes = [
 			outputPan,
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'CHORUS',
 		controls: [{
 				label: 'Pre Delay',
@@ -635,8 +621,7 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
+	},{
 		name: 'SPACE-D',
 		controls: [{
 				label: 'Pre Delay',
@@ -682,20 +667,328 @@ const efxTypes = [
 			},
 			outputLevel,
 		]
-	},
-	{
-		name: '',
+	},{
+		name: 'TETRA-CHORUS',
 		controls: [{
-				label: '',
+				label: 'Pre Delay',
 				type: 'range',
-				range: [0, 127],
-				value: 127
+				range: [0, 125],
+				value: 50
 			},
 			{
-				label: '',
+				label: 'Rate',
+				type: 'range',
+				range: [0, 117],
+				value: 115
+			},
+			{
+				label: 'Depth',
+				type: 'range',
+				range: [0, 127],
+				value: 64
+			},
+			{
+				label: 'Pre Dly Devi',
+				type: 'range',
+				range: [0, 20],
+				value: 0
+			},
+			{
+				label: 'Depth Devi',
+				type: 'range',
+				range: [0, 40],
+				value: 20
+			},
+			{
+				label: 'Pan Devi',
+				type: 'range',
+				range: [0, 20],
+				value: 20
+			},
+			{
+				label: 'Balance',
+				type: 'range',
+				range: [0, 100],
+				value: 50
+			},
+			outputLevel,
+		]
+	},{
+		name: 'FLANGER',
+		controls: [{
+				label: 'Pre Delay',
+				type: 'range',
+				range: [0, 125],
+				value: 50
+			},
+			{
+				label: 'Rate',
+				type: 'range',
+				range: [0, 117],
+				value: 115
+			},
+			{
+				label: 'Depth',
+				type: 'range',
+				range: [0, 127],
+				value: 64
+			},
+			{
+				label: 'Feedback',
+				type: 'range',
+				range: [0, 98],
+				value: 50
+			},
+			{
+				label: 'Phase',
+				type: 'range',
+				range: [0, 90],
+				value: 45
+			},
+			{
+				label: 'Filter Type',
 				type: 'options',
-				range: ['',],
-				value: ''
+				range: ['OFF', 'LPF', 'HPF'],
+				value: 'OFF'
+			},
+			{
+				label: 'Cutoff',
+				type: 'range',
+				range: FREQ_RANGE,
+				value: '1000'
+			},
+			{
+				label: 'Balance',
+				type: 'range',
+				range: [0, 100],
+				value: 50
+			},
+			outputLevel,
+		]
+	},{
+		name: 'ST-FLANGER',
+		controls: [{
+				label: 'Pre Delay',
+				type: 'range',
+				range: [0, 125],
+				value: 50
+			},
+			{
+				label: 'Rate',
+				type: 'range',
+				range: [0, 117],
+				value: 90
+			},
+			{
+				label: 'Depth',
+				type: 'range',
+				range: [0, 127],
+				value: 64
+			},
+			{
+				label: 'Feedback',
+				type: 'range',
+				range: [0, 98],
+				value: 50
+			},
+			{
+				label: 'Phase',
+				type: 'range',
+				range: [0, 90],
+				value: 90
+			},
+			{
+				label: 'Step Rate',
+				type: 'range',
+				range: [0, 125],
+				value: 50
+			},
+			{
+				label: 'Balance',
+				type: 'range',
+				range: [0, 100],
+				value: 50
+			},
+			outputLevel,
+		]
+	},{
+		name: 'SHORT-DELAY',
+		controls: [{
+				label: 'Time L',
+				type: 'range',
+				range: [0, 103],
+				value: 75
+			},{
+				label: 'Time R',
+				type: 'range',
+				range: [0, 103],
+				value: 85
+			},{
+				label: 'HF Damp',
+				type: 'options',
+				range: BYPASS_FREQ_RANGE,
+				value: 'BYPASS',
+			},{
+				label: 'Feedback',
+				type: 'range',
+				range: [0, 98],
+				value: 50
+			},{
+				label: 'Auto Pan',
+				type: 'range',
+				range: [0, 18],
+				value: 0
+			},{
+				label: 'Low Gain',
+				type: 'range',
+				range: [0, 30],
+				value: 15
+			},{
+				label: 'High Gain',
+				type: 'range',
+				range: [0, 30],
+				value: 15
+			},{
+				label: 'Balance',
+				type: 'range',
+				range: [0, 100],
+				value: 50
+			},
+			outputLevel,
+		]
+	},{
+		name: 'AUTO-PAN',
+			controls: [{
+				label: 'LFO Type',
+				type: 'options',
+				range: ['TRI', 'TRP', 'SIN', 'SAW1', 'SAW2', 'SQR',],
+				value: 'SIN'
+			},{
+				label: 'Rate',
+				type: 'range',
+				//Has numbers and symbols
+				range: [0, 117],
+				value: 109
+			},{
+				label: 'Bass Sense',
+				type: 'options',
+				range: ['OFF', 'MODE1', 'MODE2'],
+				value: 'OFF'
+			},
+			{
+				label: 'Depth',
+				type: 'range',
+				range: [0, 117],
+				value: 64
+			},
+			{
+				label: 'Low-Gain',
+				type: 'range',
+				range: [0, 30],
+				value: 15
+			},
+			{
+				label: 'High Gain',
+				type: 'range',
+				range: [0, 30],
+				value: 15
+			},
+			outputLevel,
+		]
+	},{
+		name: 'FB-P-SHIFT',
+			controls: [{
+				label: 'Coarse',
+				type: 'range',
+				range: [0, 36],
+				value: 24
+			},{
+				label: 'Fine',
+				type: 'range',
+				range: [0, 100],
+				value: 50
+			},{
+				label: 'Output Pan',
+				type: 'range',
+				range: [0, 127],
+				value: 64
+			},{
+				label: 'Pre Delay',
+				type: 'range',
+				range: [0, 125],
+				value: 50
+			},{
+				label: 'Mode',
+				type: 'options',
+				range: ['1', '2', '3', '4', '5'],
+				value: '1'
+			},{
+				label: 'Feedback',
+				type: 'range',
+				range: [0, 98],
+				value: 50
+			},{
+				label: 'Low-Gain',
+				type: 'range',
+				range: [0, 30],
+				value: 15
+			},
+			{
+				label: 'High Gain',
+				type: 'range',
+				range: [0, 30],
+				value: 15
+			},{
+				label: 'Balance',
+				type: 'range',
+				range: [0, 100],
+				value: 50
+			},
+			outputLevel,
+		]
+	},{
+		name: 'REVERB',
+		controls: [{
+			label: 'Rev Type',
+			type: 'options',
+			range: ['ROOM1', 'ROOM2', 'STAGE1', 'STAGE2', 'HALL1', 'HALL2',],
+			value: 'STAGE1'
+			},{
+				label: 'Time',
+				type: 'range',
+				range: [0, 127],
+				value: 30
+			},{
+				label: 'HF Damp',
+				type: 'options',
+				range: BYPASS_FREQ_RANGE,
+				value: 'BYPASS',
+			},{
+				label: 'Balance',
+				type: 'range',
+				range: [0, 100],
+				value: 50
+			},
+			outputLevel,
+		]
+	},{
+		name: 'GATE REVERB',
+		controls: [{
+				label: 'Gate Type',
+				type: 'options',
+				range: ['NORMAL', 'REVERSE', 'SWEEP1', 'SWEEP2',],
+				value: 'NORMAL'
+			},{
+				label: 'Gate Time',
+				type: 'range',
+				range: [0, 65],
+				value: 19
+			},
+			{
+				label: 'Balance',
+				type: 'range',
+				range: [0, 100],
+				value: 50
 			},
 			outputLevel,
 		]
