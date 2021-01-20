@@ -30,7 +30,6 @@ const RadioOptions = ({
 
 	return (
 		<div className="options-control">
-			<span className="options-control__label">{label}</span>
 			<div className="options-control__controls">
 				{range.map((option, index) => {
 					const optionId = `${id}_${index}`
@@ -49,6 +48,7 @@ const RadioOptions = ({
 					)
 				})}
 			</div>
+			<span className="options-control__label">{label}</span>
 		</div>
 	)
 }

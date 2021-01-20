@@ -33,7 +33,7 @@ const Slider = ({
 				max={range[1]}
 				disabled={disabled}
 			/>
-			<label htmlFor={id}>{label}</label>
+			<label htmlFor={id}><strong>{label}</strong> {sliderValue}</label>
 		</div>
 	)
 }

@@ -36,7 +36,7 @@ const EFXControls = ({ efxConfig }) => {
 
 	
 	const { name: efxName , controls } = efxTypes[currentEfxType]
-	const efxControl = { efxName }
+	const efxControl = { name: efxName }
 	efxControl.controls = controls.map((control, index) => {
 		const address = [0x00, paramStartAddress + index]
 		return { address, ...control }

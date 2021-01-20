@@ -1,17 +1,31 @@
+.options-control {
+	display: flex;
+	padding: 1rem 0;
+}
 
 .options-control__label {
+	font-size: 2rem;
 	font-weight: 700;
+	margin-left: 20px;
 }
 
 .options-control__controls {
+	align-items: flex-start;
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 1.6rem;
+	padding-top: 0.4rem;
 }
 
+.options-control__radio-group {
+	border: 1px solid #151515;
+	margin-right: 0.5rem;
+	margin-bottom: 0.5rem;
+}
 .options-control__radio-group label {
-
+	margin-right: 0.5rem;
 }
+
 .options-control__radio-group input {
 
 }

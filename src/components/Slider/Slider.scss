@@ -1,8 +1,9 @@
-$mover-w: 12.5em;
-$thumb-d: 1.5em;
+$mover-w: 30rem;
+$thumb-d: 3rem;
 $track-w: $mover-w + $thumb-d;
-$track-h: .25em;
+$track-h: .25rem;
 $track-c: #151515;
+$track-c-disabled: #5f5f5f;
 $ruler-c: #95a;
 $ruler-u: .1*$mover-w;
 $ruler-w: 2px;
@@ -16,6 +17,10 @@ $ruler-w: 2px;
 	 font-size: 1rem;
  }
 
+ @mixin track-disabled() { 
+	background-color: $track-c-disabled;
+ }
+
 @mixin thumb() {
 	box-sizing: border-box;
 	border: none;
@@ -26,12 +31,18 @@ $ruler-w: 2px;
 
 @mixin thumb-focus() { background: #f90; }
 
+@mixin thumb-disabled() { border: 2px solid $track-c-disabled; background:#fff; }
+
 .slider-control {
-	display: flex;
-	flex-direction: column-reverse;
-	position: relative;
-	width: $track-w;
 	color: $track-c;
+	display: flex;
+	padding-bottom: 1rem;
+	position: relative;
+}
+.slider-control label {
+	font-size: 2rem;
+	margin-left: 20px;
+	padding-top: 1.5rem;
 }
 
 .slider-control__range {
@@ -41,7 +52,8 @@ $ruler-w: 2px;
 	
 	margin: 0;
 	padding: 0;
-	width: 100%; height: 2*$thumb-d;
+	width: $track-w;
+	height: 2*$thumb-d;
 	background: 
 		repeating-linear-gradient(90deg,
 			$track-c 0, 
@@ -64,6 +76,7 @@ $ruler-w: 2px;
 		margin-top: 0;
 		@include thumb
 	}
+	&::-webkit-slider-thumb
 
 	&:focus {
 		outline: none;
@@ -74,6 +87,20 @@ $ruler-w: 2px;
 		&::-moz-range-thumb { @include thumb-focus }
 		&::-ms-thumb {
 			@include thumb-focus
+		}
+	}
+
+	&:disabled {
+		&::-webkit-slider-runnable-track { @include track-disabled }
+		&::-moz-range-track { @include track-disabled }
+		&::-ms-track { @include track-disabled }
+
+		&::-webkit-slider-thumb {
+			@include thumb-disabled
+		}
+		&::-moz-range-thumb { @include thumb-disabled }
+		&::-ms-thumb {
+			@include thumb-disabled
 		}
 	}
 }
