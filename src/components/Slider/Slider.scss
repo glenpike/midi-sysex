@@ -26,7 +26,7 @@ $ruler-w: 2px;
 	border: none;
 	width: $thumb-d; height: $thumb-d;
 	border-radius: 2%;
-	background: $track-c;
+	background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(135,135,135,1) 47%, rgba(255,255,255,1) 48%, rgba(255,255,255,1) 51%, rgba(123,123,123,1) 52%, rgba(0,0,0,1) 100%);;
 }
 
 @mixin thumb-focus() { background: #f90; }

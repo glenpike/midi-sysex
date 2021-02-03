@@ -1,3 +1,20 @@
 .group-control {
+	border-radius: 8px;
 	font-family: sans-serif;
+}
+
+.group-control legend {
+	background-color: black;
+	color: white;
+	display: block;
+	float: left;
+	font-weight: bold;
+	margin: 0px 0px 0 -8px;
+	padding: 0px 20px;
+	text-transform: uppercase;
+	width: calc(100% - 24px);
+}
+
+.group-control legend + * {
+	clear: both;
 }
