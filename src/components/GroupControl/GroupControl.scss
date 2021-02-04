@@ -1,6 +1,7 @@
 .group-control {
 	border-radius: 8px;
 	font-family: sans-serif;
+	padding: 12px;
 }
 
 .group-control legend {
@@ -9,10 +10,10 @@
 	display: block;
 	float: left;
 	font-weight: bold;
-	margin: 0px 0px 0 -8px;
+	margin: 0;
 	padding: 0px 20px;
 	text-transform: uppercase;
-	width: calc(100% - 24px);
+	width: calc(100% - 40px);
 }
 
 .group-control legend + * {

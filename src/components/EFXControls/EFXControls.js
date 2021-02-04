@@ -44,7 +44,7 @@ const EFXControls = ({ efxConfig }) => {
 	})
 
 	return (
-		<fieldset className="efx-controls">
+		<fieldset className="efx-controls group-control">
 			<legend>{name}</legend>
 			<RadioOptions {...efxTypeControl}/>
 			<GroupControl sliderConfig={efxControl} />
