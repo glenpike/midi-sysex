@@ -1,7 +1,7 @@
 import React from 'react'
 import { act } from 'react-dom/test-utils'
-import { render, fireEvent } from '@testing-library/react'
-import { screen } from '@testing-library/dom'
+import { render, fireEvent, screen, waitFor, cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 
 import RadioOptions from './RadioOptions'
 
@@ -21,18 +21,16 @@ describe('RadioOptions', () => {
 	}
 
 	beforeEach(() => {
-		act(() => {
-			;({ container } = render(<RadioOptions {...props} />))
-		})
+		render(<RadioOptions {...props} />)
 	})
 
 	afterEach(() => {
-		container = null
+		cleanup()
 		handler.mockReset
 	})
 
 	it('renders the with the correct label', () => {
-		expect(container.querySelector('.options-control__label').textContent).toBe(props.label)
+		expect(screen.getByText(new RegExp(props.label))).toBeTruthy()
 	})
 
 	it('renders a radio for each item in the range', () => {
@@ -41,17 +39,19 @@ describe('RadioOptions', () => {
 		})
 	})
 
-	it('sets a default value', () => {
-		const expectedValue = props.range[0]
-		expect(container.querySelector('input:checked').value).toBe('0')
+	it('sets a default selection if no value is set in props', () => {
+		const radio = screen.getByLabelText(props.range[0])
+		expect(radio.value).toBe('0')
+		expect(radio).toBeChecked()
 	})
 
-	it('I can set a value', () => {
+	it('I can set a value', async () => {
+		cleanup()
 		const testProps = { ...props, value: props.range[2] }
-		act(() => {
-			;({ container } = render(<RadioOptions {...testProps} />))
-		})
-		expect(container.querySelector('input:checked').value).toBe('2')
+		render(<RadioOptions {...testProps} />)
+		const radio = screen.getByLabelText(props.range[2])
+		expect(radio.value).toBe('2')
+		expect(radio).toBeChecked()
 	})
 
 
