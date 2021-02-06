@@ -1,6 +1,5 @@
 import React from 'react'
-import { act } from 'react-dom/test-utils'
-import { render, fireEvent, screen, waitFor, cleanup } from '@testing-library/react'
+import { render, fireEvent, screen, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 import RadioOptions from './RadioOptions'
@@ -8,8 +7,6 @@ import RadioOptions from './RadioOptions'
 const handler = jest.fn()
 
 describe('RadioOptions', () => {
-	let container
-
 	const props = {
 		id: 'test-id',
 		name: 'test-name',
