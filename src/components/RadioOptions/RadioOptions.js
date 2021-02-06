@@ -20,7 +20,7 @@ const RadioOptions = ({
 	const [radioValue, setRadioValue] = useState(selectedValue)
 
 	const handleRadioOptionsChange = (event) => {
-		console.log('handleRadioOptionsChange ', event.target.value)
+		// console.log('handleRadioOptionsChange ', event.target.value)
 		const index = +event.target.value
 		changeHandler(address, index)
 		setRadioValue(index)

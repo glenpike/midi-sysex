@@ -55,13 +55,12 @@ describe('RadioOptions', () => {
 	})
 
 
-	it.skip('calls the handler with the right value	', () => {
-		const index = 3
-		const value = props.range[index]
-		const input = screen.getByLabelText(new RegExp(value))
-		console.log('value: ', value, 'input: ', input.value)
-		fireEvent.change(input, { target: { value }})
-		screen.debug()
-		expect(handler).toHaveBeenCalledWith(props.address, index)
+	it('calls the handler with the right value	', () => {
+		const radioOne = screen.getByLabelText(new RegExp(props.range[0]))
+		const radioThree = screen.getByLabelText(new RegExp(props.range[3]))
+		expect(radioOne).toBeChecked()
+		fireEvent.click(radioThree)
+		expect(radioThree).toBeChecked()
+		expect(handler).toHaveBeenCalledWith(props.address, 3)
 	})
 })
