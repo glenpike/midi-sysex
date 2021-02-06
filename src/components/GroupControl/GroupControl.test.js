@@ -1,5 +1,4 @@
 import React from 'react'
-import { act } from 'react-dom/test-utils'
 import { render, fireEvent, screen, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import GroupControl from './GroupControl.js'

@@ -1,10 +1,8 @@
 import React from 'react'
-import { act } from 'react-dom/test-utils'
-import { render, screen } from '@testing-library/react'
-// import { screen } from '@testing-library/dom'
+import { fireEvent, render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import EFXControls from './EFXControls.js'
 import WebMidiContext from '../../contexts/WebMidiContext.js'
-import { bytesToHex } from '../../utils.js'
 
 describe('EFXControls', () => {
 	const efxTypes = [{
@@ -57,7 +55,7 @@ describe('EFXControls', () => {
 			address: [0x00, 0x0D],
 			type: 'options',
 			range: efxTypes.map(efxType => efxType.name),
-			value: efxTypes[0].name,
+			// value: efxTypes[0].name,
 		},
 		paramStartAddress: 0x0E,
 		maxParams: 12,
@@ -77,28 +75,80 @@ describe('EFXControls', () => {
 				<EFXControls efxConfig={efxConfig} />
 			</WebMidiContext.Provider>
 		)
-	
-	// 	beforeEach(() => {
-	// 	act(() => {
-	// 		;({ container } = render(
-	// 			<WebMidiContext.Provider value={provider}>
-	// 				<EFXControls efxConfig={efxConfig} />
-	// 			</WebMidiContext.Provider>
-	// 		))
-	// 	})
-	// })
-
-	// afterEach(() => {
-	// 	container = null
-	// })
 
 	it('renders without crashing', () => {
 		renderWithConfig()
-		expect(screen.getAllByText('EFX Controls')).toHaveLength(1);
+		expect(screen.getByText('EFX Controls')).toBeTruthy()
 	})
 
 	it('renders the selector for the effect types', () => {
-		const { container } = renderWithConfig()
-		expect(container.querySelectorAll('input[type="radio"]')).toHaveLength(2)
+		renderWithConfig()
+		efxTypes.forEach((efxType) => {
+			expect(screen.getByLabelText(new RegExp(efxType.name))).toBeTruthy()
+		})
+	})
+
+	it('shows the default effect controls', () => {
+		renderWithConfig()
+		efxTypes[0].controls.forEach((control) => {
+			expect(screen.getByLabelText(new RegExp(control.label))).toBeTruthy()
+		})
+	})
+
+	it('shows the default effect controls', () => {
+		renderWithConfig()
+		const effectOne = screen.getByLabelText(new RegExp(efxTypes[0].name))
+		expect(effectOne).toBeChecked()
+		efxTypes[0].controls.forEach((control) => {
+			expect(screen.getByText(new RegExp(control.label))).toBeTruthy()
+		})
+	})
+
+	it('hides the unselected effect controls', () => {
+		renderWithConfig()
+		const effectTwo = screen.getByLabelText(new RegExp(efxTypes[1].name))
+		expect(effectTwo).not.toBeChecked()
+		efxTypes[1].controls.forEach((control) => {
+			expect(screen.queryByText(new RegExp(control.label))).not.toBeTruthy()
+		})
+	})
+
+	it('I can select and show controls for another effect', () => {
+		renderWithConfig()
+		const effectTwo = screen.getByLabelText(new RegExp(efxTypes[1].name))
+		fireEvent.click(effectTwo)
+		efxTypes[1].controls.forEach((control) => {
+			expect(screen.getByText(new RegExp(control.label))).toBeTruthy()
+		})
+		efxTypes[0].controls.forEach((control) => {
+			expect(screen.queryByText(new RegExp(control.label))).not.toBeTruthy()
+		})
+	})
+
+	describe('When a value is passed in', () => {
+		beforeAll(() => {
+			efxConfig.efxTypeSelect.value = efxTypes[1].name
+		})
+		afterAll(() => {
+			efxConfig.efxTypeSelect.value = null
+		})
+
+		it('shows the selected effect controls', () => {
+			renderWithConfig()
+			const effectTwo = screen.getByLabelText(new RegExp(efxTypes[1].name))
+			expect(effectTwo).toBeChecked()
+			efxTypes[1].controls.forEach((control) => {
+				expect(screen.getByText(new RegExp(control.label))).toBeTruthy()
+			})
+		})
+	
+		it('hides the unselected effect controls', () => {
+			renderWithConfig()
+			const effectOne = screen.getByLabelText(new RegExp(efxTypes[0].name))
+			expect(effectOne).not.toBeChecked()
+			efxTypes[0].controls.forEach((control) => {
+				expect(screen.queryByText(new RegExp(control.label))).not.toBeTruthy()
+			})
+		})
 	})
 })
