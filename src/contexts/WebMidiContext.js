@@ -15,6 +15,7 @@ const WebMidiContext = React.createContext({
 })
 
 const WebMidiContextProvider = ({ children }) => {
+	console.log('WebMidi mocked?')
 	const [currentOutput, _setCurrentOutput] = useState(null)
 
 	const [midiOutputs, setMidiOutputs] = useState([])

@@ -1,5 +1,5 @@
 const WebMidi = jest.createMockFromModule('webmidi');
-
+console.log('mocking WebMidi')
 const sendSysEx = jest.fn()
 const outputs = [
 	{
@@ -19,6 +19,7 @@ WebMidi.getOutputById = (id) => {
 	return outputs.find(output => output.id === id)
 }
 WebMidi.enable = ((callback) => {
+	console.log('mock WebMidi.enable')
 	callback()
 })
 
