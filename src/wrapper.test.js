@@ -29,4 +29,8 @@ describe('Wrapper', () => {
 		renderWithConfig()
 		screen.debug()
 	})
+
+	it('has called initialise', () => {
+		expect(provider.initialise).toHaveBeenCalled()
+	})
 })
