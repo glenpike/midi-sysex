@@ -8,6 +8,7 @@ const WebMidiContext = React.createContext({
 	midiInitialised: false,
 	currentOutput: null,
 	midiOutputs: null,
+	lastSysexMessage: null,
 	initialise: () => {},
 	setCurrentOutput: () => {},
 	getCurrentOutput: () => {},
@@ -21,6 +22,8 @@ const WebMidiContextProvider = ({ children }) => {
 	const [midiOutputs, setMidiOutputs] = useState([])
 
 	const [midiInitialised, setMidiInitialised] = useState(false)
+
+	const [lastSysexMessage, setSysexMessage] = useState(null)
 
 	const initialise = () => {
 		WebMidi.enable(function (err) {
@@ -74,6 +77,7 @@ const WebMidiContextProvider = ({ children }) => {
 		if (output) {
 			console.log(`sending sysex message: ${bytesToHex(data)}`)
 			try {
+				setSysexMessage({ manufacturer, data })
 				output.sendSysex(manufacturer, data)
 			} catch(RangeError) {
 				console.log(`RangeError for: ${value}`)
@@ -85,6 +89,7 @@ const WebMidiContextProvider = ({ children }) => {
 		midiInitialised,
 		currentOutput,
 		midiOutputs,
+		lastSysexMessage,
 		initialise,
 		setCurrentOutput,
 		getCurrentOutput,

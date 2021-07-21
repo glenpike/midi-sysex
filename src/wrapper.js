@@ -3,6 +3,7 @@ import MidiSelect from './components/MidiSelect/MidiSelect.js'
 import GroupControl from './components/GroupControl/GroupControl.js'
 import { controlConfig, efxConfig } from './controls.js'
 import EFXControls from './components/EFXControls/EFXControls.js'
+import MessageDisplay from './components/MessageDisplay/MessageDisplay.js'
 
 const Wrapper = () => {
 	return(
@@ -17,6 +18,7 @@ const Wrapper = () => {
 					<GroupControl key={index} sliderConfig={control} />
 				)}
 				<EFXControls efxConfig={efxConfig} />
+				<MessageDisplay/>
 			</div>
 		</React.Fragment>
 	)

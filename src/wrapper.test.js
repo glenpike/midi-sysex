@@ -1,8 +1,8 @@
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Wrapper from './wrapper.js'
-import webmidi from 'webmidi'
+// import webmidi from 'webmidi'
 import WebMidiContext from './contexts/WebMidiContext.js'
 
 const sendSysexMessage = jest.fn()
@@ -25,12 +25,13 @@ const midiOutputs = [{name: 'One'}, {name: 'Two'}]
 		)
 
 describe('Wrapper', () => {
-	it('just works', () => {
+	it.skip('just works', () => {
 		renderWithConfig()
 		screen.debug()
 	})
 
 	it('has called initialise', () => {
+		renderWithConfig()
 		expect(provider.initialise).toHaveBeenCalled()
 	})
 })
