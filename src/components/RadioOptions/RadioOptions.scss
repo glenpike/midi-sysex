@@ -21,11 +21,68 @@
 	border: 1px solid #151515;
 	margin-right: 0.5rem;
 	margin-bottom: 0.5rem;
+	padding-right: 40px;
+	position: relative;
 }
-.options-control__radio-group label {
+
+.options-control__radio-button {
+	cursor: pointer;
+	position: absolute;
+	z-index: 1;
+	top: 2px;
+	right: 2px;
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	opacity: 0;
+}
+
+.options-control__radio-label {
+	cursor: pointer;
+	display: inline-block;
+	margin-left: 0.5rem;
 	margin-right: 0.5rem;
+	touch-action: manipulation;
 }
 
-.options-control__radio-group input {
+.options-control__radio-label:before {
+	content: "";
+	box-sizing: border-box;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid black;
+	border-radius: 50%;
+	background: transparent;
+}
 
+.options-control__radio-label:after {
+	content: "";
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 0;
+	height: 0;
+	border: 7px solid #e00;
+	border-radius: 50%;
+	opacity: 0;
+	background: radial-gradient(#fff, #e00);
+}
+
+.options-control__radio-button:checked + .options-control__radio-label:after {
+	opacity: 1;
+}
+
+.options-control__radio-button:disabled + .options-control__radio-label:before {
+	border-color: grey;
+}
+.options-control__radio-button:disabled + .options-control__radio-label:after {
+	border-color: grey;
+	background: grey;
+}
+
+.options-control__radio-button:focus + .options-control__radio-label:before {
+	box-shadow: 0 0 0 2px #015fcc;
 }

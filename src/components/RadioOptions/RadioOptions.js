@@ -37,13 +37,14 @@ const RadioOptions = ({
 						<div key={optionId} className="options-control__radio-group">
 							<input 
 								id={optionId}
+								className="options-control__radio-button"
 								name={name}
 								type="radio"
 								value={index}
 								checked={index == radioValue}
 								onChange={handleRadioOptionsChange}
 								disabled={disabled}/>
-							<label htmlFor={optionId}>{option}</label>
+							<label className="options-control__radio-label" htmlFor={optionId}>{option}</label>
 						</div>
 					)
 				})}
