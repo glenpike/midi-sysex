@@ -16,3 +16,35 @@
 	height: 60px;
 	width: 60%;
 }
+
+.message-display__video-crop-lcd {
+	position: fixed;
+	width: 260px;
+	height: 80px;
+	top: 0;
+  left: calc(50% - 130px);
+	overflow: hidden;
+	z-index: 10;
+}
+.message-display__video-lcd {
+  -moz-transform:rotate(180deg);
+  -webkit-transform:rotate(180deg);
+  -o-transform:rotate(180deg);
+  -ms-transform:rotate(180deg);
+  transform:rotate(180deg);
+	position: absolute;
+	top: -120px;
+}
+
+.message-display__video-crop-webcam {
+	position: relative;
+	overflow: hidden;
+}
+
+.message-display__video-webcam {
+  -moz-transform:rotate(180deg);
+  -webkit-transform:rotate(180deg);
+  -o-transform:rotate(180deg);
+  -ms-transform:rotate(180deg);
+  transform:rotate(180deg);
+}
